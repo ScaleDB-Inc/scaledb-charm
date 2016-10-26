@@ -1,0 +1,15 @@
+name: scaledb
+summary: ScaleDB
+maintainer: ScaleDB, Inc. <info@scaledb.com>
+description:
+  High volume, high velocity transactional database engine Distributed, clustered, always on.
+tags:
+  - databases
+provides:
+  db:
+    interface: mysql
+
+series: ["xenial"]
+
+
+

@@ -1,0 +1,51 @@
+#!/bin/bash
+set -e
+
+#
+# Variables definition
+#
+appVersion="16.10.00"
+site="http://downloads.scaledb.com/scaledb_secret_internal_use_only"
+fileUDE="scaledb-ude-16.10.00-P20339-x86_64.deb"
+fileMariaDb="scaledb-mariadb-16.10.00-10.1.18-x86_64.deb"
+
+#
+# Start
+#
+application-version-set ${appVersion}
+status-set maintenance  "Installing ScaleDB"
+
+# Download
+# - deletion of the files in case Juju is executing the hook again for a failure
+cd /tmp
+if [[ -f "${fileUDE}" ]]
+then
+    rm ${fileUDE}
+fi
+
+if [[ -f "${fileMariaDb}" ]]
+then
+   rm ${fileMariaDb}
+fi
+
+wget ${site}/${fileUDE}
+wget ${site}/${fileMariaDb}
+
+
+# Install dependencies
+apt-get install -y libaio1
+apt-get install -y libjemalloc-dev
+apt-get install -y netcat-openbsd
+apt-get install -y python2.7
+
+# Install UDE
+dpkg -i  ./${fileUDE}
+
+# Install MariaDB
+dpkg -i  ./${fileMariaDb}
+
+#
+# End
+#
+application-version-set ${appVersion}
+status-set active       "ready"
