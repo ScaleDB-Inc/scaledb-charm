@@ -1,0 +1,10 @@
+repo: "https://github.com/ScaleDB-Inc/scaledb-charm.git"
+includes: ['layer:basic']
+options:
+  basic:
+    use_venv: true
+    packages:
+      - libaio1
+      - libjemalloc-dev
+      - netcat-openbsd
+      - python2.7
