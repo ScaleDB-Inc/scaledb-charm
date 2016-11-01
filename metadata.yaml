@@ -1,0 +1,20 @@
+name: scaledb
+summary: ScaleDB
+maintainer: ScaleDB Inc. <info@scaledb.com>
+description:
+  High volume, high velocity transactional database engine Distributed, clustered, always on.
+tags:
+  - databases
+provides:
+  db:
+    interface: mysql
+series: ["xenial"]
+resources:
+  scaledb-ude:
+    type: file
+    filename: ascaledb-ude-16.10.00-P20339-x86_64.deb
+    description: ScaleDB UDE package.
+  scaledb-maria:
+    type: file
+    filename: scaledb-mariadb-16.10.00-10.1.18-x86_64.deb
+    description: ScaleDB's MariaDB distribution.

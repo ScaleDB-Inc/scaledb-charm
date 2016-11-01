@@ -3,11 +3,11 @@
 Juju charm for ScaleDB :
 High volume, high velocity transactional database engine Distributed, clustered, always on.
 
-# Hooks
+# Usage
 
-This charm provides implementation for the following hooks :
+To deploy this charm you would:
 
-  * `install`
+    juju deploy scaledb
 
 # Actions
 
